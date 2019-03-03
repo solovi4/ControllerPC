@@ -19,15 +19,16 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private TextView textView;
-    private SoapCall soapCall;
+
+    private Commander commander;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        commander = new Commander("http://192.168.1.38:49001/");
         setContentView(R.layout.activity_main);
         SeekBar seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(this);
         textView = findViewById(R.id.textView);
-        soapCall = new SoapCall();
     }
 
     public void Alert(String message)
@@ -41,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         //textView.setText(String.valueOf(progress));
-
-        soapCall.execute();
+        progress = progress * 10;
+        commander.SetVolume(progress);
+        //soapCall.execute();
         textView.setText(String.valueOf(progress));
 
     }
