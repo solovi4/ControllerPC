@@ -17,12 +17,14 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private TextView textView;
 
     private Commander commander;
+    private PreferencesManager preferencesManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        commander = new Commander("http://192.168.1.38:49001/");
-
+        preferencesManager = PreferencesManager.GetInstance(this.getApplicationContext());
+        commander = new Commander(preferencesManager.GetURL());
         SeekBar seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(this);
         textView = findViewById(R.id.textView);
@@ -37,7 +39,15 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     public void settingsItemClick(MenuItem item) {
         Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data == null) {return;}
+        boolean changed = data.getBooleanExtra(SettingsActivity.Changed, false);
+        if(changed)
+            commander = new Commander(preferencesManager.GetURL());
     }
 
     public void Alert(String message)
@@ -50,11 +60,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        //textView.setText(String.valueOf(progress));
         progress = progress * 10;
         commander.SetVolume(progress);
-        //soapCall.execute();
-        textView.setText(String.valueOf(progress));
+        //textView.setText(String.valueOf(progress));
 
     }
 
