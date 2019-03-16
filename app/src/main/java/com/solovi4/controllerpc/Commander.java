@@ -21,4 +21,28 @@ public class Commander {
         soapCall.execute();
     }
 
+    public void MouseLeftClick() {
+        SoapCall soapCall = new SoapCall(address);;
+        soapCall.SetMethodName("MouseLeftClick");
+        soapCall.execute();
+    }
+
+    public void MouseRightClick() {
+        SoapCall soapCall = new SoapCall(address);;
+        soapCall.SetMethodName("MouseRightClick");
+        soapCall.execute();
+    }
+
+    public void CancelShutdown() {
+        SoapCall soapCall = new SoapCall(address);;
+        soapCall.SetMethodName("CancelShutDown");
+        soapCall.execute();
+    }
+
+    public void Shutdownn() {
+        SoapCall soapCall = new SoapCall(address);;
+        soapCall.SetMethodName("ShutDown");
+        soapCall.execute();
+    }
+
 }
