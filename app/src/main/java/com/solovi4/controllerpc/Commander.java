@@ -13,4 +13,12 @@ public class Commander {
         soapCall.execute();
     }
 
+    public void MoveCursor(int dx, int dy) {
+        SoapCall soapCall = new SoapCall(address);;
+        soapCall.SetMethodName("MoveCursor");
+        soapCall.AddProperty("dx", dx);
+        soapCall.AddProperty("dy", dy);
+        soapCall.execute();
+    }
+
 }

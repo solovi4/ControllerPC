@@ -23,8 +23,8 @@ public class PreferencesManager {
 
     private void loadPreferences() {
         SharedPreferences settings = context.getSharedPreferences(prefName, 0);
-        ipAddress = settings.getString(pcNameKey, "192.168.0.1");
-        port = settings.getInt(portKey, 0);
+        ipAddress = settings.getString(pcNameKey, "192.168.1.38");
+        port = settings.getInt(portKey, 49001);
     }
 
     public String GetIPAddress() {
