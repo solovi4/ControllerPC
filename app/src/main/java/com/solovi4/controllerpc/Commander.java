@@ -45,4 +45,11 @@ public class Commander {
         soapCall.execute();
     }
 
+    public void SendText(String text) {
+        SoapCall soapCall = new SoapCall(address);;
+        soapCall.SetMethodName("SendText");
+        soapCall.AddProperty("text", text);
+        soapCall.execute();
+    }
+
 }

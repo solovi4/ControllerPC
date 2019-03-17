@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="__"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -45,7 +45,7 @@
 
     <Button
         android:id="@+id/buttonMouseLeft"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -57,7 +57,7 @@
 
     <Button
         android:id="@+id/buttonMouseRight"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -136,5 +136,42 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCursorUp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSendText"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="9dp"
+        android:onClick="buttonSendText_click"
+        android:text="->"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMouseRight"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDel"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="buttonDel_click"
+        android:text="del"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMouseRight"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSendText"
+        app:layout_constraintStart_toEndOf="@+id/editText" />
 
 </android.support.constraint.ConstraintLayout>

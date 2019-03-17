@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Commander commander;
     private PreferencesManager preferencesManager;
     private Button moveCursorButton;
-
+    private EditText editText;
     private CursorSensorController cursorSensorController;
     private MySeekBarListener mySeekBarListener;
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         moveCursoreDownButton.setOnTouchListener(cursorButtonControllerDown);
 
         textView = findViewById(R.id.textView);
+        editText = findViewById(R.id.editText);
     }
 
 
@@ -100,5 +102,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonMouseRight_Click(View view) {
         commander.MouseRightClick();
+    }
+
+    public void buttonSendText_click(View view) {
+        String text = editText.getText().toString();
+        commander.SendText(text);
+    }
+
+    public void buttonDel_click(View view) {
+        commander.SendText("{BACKSPACE}");
     }
 }
