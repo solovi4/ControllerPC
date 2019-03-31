@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -19,10 +21,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Commander commander;
     private PreferencesManager preferencesManager;
-    private Button moveCursorButton;
+    private ImageButton moveCursorButton;
     private EditText editText;
     private CursorSensorController cursorSensorController;
     private MySeekBarListener mySeekBarListener;
+    private ImageButton buttonMouseLeft;
+    private ImageButton buttonMouseRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         CursorButtonController cursorButtonControllerDown = new CursorButtonController(commander, 0, 5);
         Button moveCursoreDownButton = findViewById(R.id.buttonCursorDown);
         moveCursoreDownButton.setOnTouchListener(cursorButtonControllerDown);
+
+        buttonMouseLeft = findViewById(R.id.buttonMouseLeft);
+        MouseLeftButtonListener mouseLeftButtonListener = new MouseLeftButtonListener(commander);
+        buttonMouseLeft.setOnTouchListener(mouseLeftButtonListener);
+
+        MouseRightButtonListener mouseRightButtonListener = new MouseRightButtonListener(commander);
+        buttonMouseRight = findViewById(R.id.buttonMouseRight);
+        buttonMouseRight.setOnTouchListener(mouseRightButtonListener);
 
         textView = findViewById(R.id.textView);
         editText = findViewById(R.id.editText);
@@ -93,15 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonShutdown_Click(View view) {
-        commander.Shutdownn();
-    }
-
-    public void buttonMouseLeft_click(View view) {
-        commander.MouseLeftClick();
-    }
-
-    public void buttonMouseRight_Click(View view) {
-        commander.MouseRightClick();
+        commander.Shutdown();
     }
 
     public void buttonSendText_click(View view) {
@@ -112,4 +116,6 @@ public class MainActivity extends AppCompatActivity {
     public void buttonDel_click(View view) {
         commander.SendText("{BACKSPACE}");
     }
+
+
 }

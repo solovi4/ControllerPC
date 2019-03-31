@@ -31,41 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/moveCursorButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="*"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorDown"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCursorRight"
-        app:layout_constraintStart_toEndOf="@+id/buttonCursorLeft" />
-
-    <Button
-        android:id="@+id/buttonMouseLeft"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="buttonMouseLeft_click"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorLeft"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCursorUp"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonMouseRight"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="buttonMouseRight_Click"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorRight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonCursorUp" />
 
     <Button
         android:id="@+id/buttonSutdown"
@@ -73,14 +38,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Выкл"
         android:onClick="buttonShutdown_Click"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMouseRight"
+        android:text="Выкл"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <Button
         android:id="@+id/buttonCancel"
@@ -99,7 +62,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
         android:text="▲"
         app:layout_constraintBottom_toTopOf="@+id/moveCursorButton"
         app:layout_constraintEnd_toStartOf="@+id/buttonMouseRight"
@@ -142,11 +105,10 @@
         android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorUp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMouseLeft"
         app:layout_constraintEnd_toStartOf="@+id/buttonDel"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -154,12 +116,14 @@
         android:id="@+id/buttonSendText"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="8dp"
         android:onClick="buttonSendText_click"
         android:text="->"
         app:layout_constraintBottom_toTopOf="@+id/buttonMouseRight"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonDel" />
 
     <Button
         android:id="@+id/buttonDel"
@@ -170,8 +134,50 @@
         android:layout_marginBottom="8dp"
         android:onClick="buttonDel_click"
         android:text="del"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMouseRight"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCursorUp"
         app:layout_constraintEnd_toStartOf="@+id/buttonSendText"
         app:layout_constraintStart_toEndOf="@+id/editText" />
+
+    <ImageButton
+        android:id="@+id/buttonMouseLeft"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/left_button"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCursorLeft"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCursorUp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/buttonMouseRight"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCursorRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonCursorUp"
+        app:srcCompat="@drawable/right_button" />
+
+    <ImageButton
+        android:id="@+id/moveCursorButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCursorDown"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCursorRight"
+        app:layout_constraintStart_toEndOf="@+id/buttonCursorLeft"
+        app:srcCompat="@drawable/circle" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,49 +7,56 @@ public class Commander {
     }
 
     public void SetVolume(int volume) {
-        SoapCall soapCall = new SoapCall(address);;
+        SoapCall soapCall = new SoapCall(address);
         soapCall.SetMethodName("SetVolume");
         soapCall.AddProperty("level", volume);
         soapCall.execute();
     }
 
     public void MoveCursor(int dx, int dy) {
-        SoapCall soapCall = new SoapCall(address);;
+        SoapCall soapCall = new SoapCall(address);
         soapCall.SetMethodName("MoveCursor");
         soapCall.AddProperty("dx", dx);
         soapCall.AddProperty("dy", dy);
         soapCall.execute();
     }
 
-    public void MouseLeftClick() {
-        SoapCall soapCall = new SoapCall(address);;
-        soapCall.SetMethodName("MouseLeftClick");
+    private void callMethodWithoutParametrs(String methodName) {
+        SoapCall soapCall = new SoapCall(address);
+        soapCall.SetMethodName(methodName);
         soapCall.execute();
     }
 
-    public void MouseRightClick() {
-        SoapCall soapCall = new SoapCall(address);;
-        soapCall.SetMethodName("MouseRightClick");
-        soapCall.execute();
+    public void MouseLeftButtonDown() {
+        callMethodWithoutParametrs("MouseLeftButtonDown");
+    }
+
+    public void MouseLeftButtonUp() {
+        callMethodWithoutParametrs("MouseLeftButtonUp");
+    }
+
+    public void MouseRightButtonDown() {
+        callMethodWithoutParametrs("MouseRightButtonDown");
+    }
+
+    public void MouseRightButtonUp() {
+        callMethodWithoutParametrs("MouseRightButtonUp");
     }
 
     public void CancelShutdown() {
-        SoapCall soapCall = new SoapCall(address);;
-        soapCall.SetMethodName("CancelShutDown");
-        soapCall.execute();
+        callMethodWithoutParametrs("CancelShutDown");
     }
 
-    public void Shutdownn() {
-        SoapCall soapCall = new SoapCall(address);;
-        soapCall.SetMethodName("ShutDown");
-        soapCall.execute();
+    public void Shutdown() {
+        callMethodWithoutParametrs("ShutDown");
     }
 
     public void SendText(String text) {
-        SoapCall soapCall = new SoapCall(address);;
+        SoapCall soapCall = new SoapCall(address);
         soapCall.SetMethodName("SendText");
         soapCall.AddProperty("text", text);
         soapCall.execute();
     }
+
 
 }
