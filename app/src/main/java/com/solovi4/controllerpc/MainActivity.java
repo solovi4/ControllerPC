@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private MySeekBarListener mySeekBarListener;
     private ImageButton buttonMouseLeft;
     private ImageButton buttonMouseRight;
+    private Button touchPad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +46,6 @@ public class MainActivity extends AppCompatActivity {
         SeekBar seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(mySeekBarListener);
 
-        CursorButtonController cursorButtonControllerLeft = new CursorButtonController(commander, -5, 0);
-        Button moveCursoreLeftButton = findViewById(R.id.buttonCursorLeft);
-        moveCursoreLeftButton.setOnTouchListener(cursorButtonControllerLeft);
-
-        CursorButtonController cursorButtonControllerRight = new CursorButtonController(commander, 5, 0);
-        Button moveCursoreRightButton = findViewById(R.id.buttonCursorRight);
-        moveCursoreRightButton.setOnTouchListener(cursorButtonControllerRight);
-
-        CursorButtonController cursorButtonControllerUp = new CursorButtonController(commander, 0, -5);
-        Button moveCursoreUpButton = findViewById(R.id.buttonCursorUp);
-        moveCursoreUpButton.setOnTouchListener(cursorButtonControllerUp);
-
-        CursorButtonController cursorButtonControllerDown = new CursorButtonController(commander, 0, 5);
-        Button moveCursoreDownButton = findViewById(R.id.buttonCursorDown);
-        moveCursoreDownButton.setOnTouchListener(cursorButtonControllerDown);
-
         buttonMouseLeft = findViewById(R.id.buttonMouseLeft);
         MouseLeftButtonListener mouseLeftButtonListener = new MouseLeftButtonListener(commander);
         buttonMouseLeft.setOnTouchListener(mouseLeftButtonListener);
@@ -68,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         buttonMouseRight = findViewById(R.id.buttonMouseRight);
         buttonMouseRight.setOnTouchListener(mouseRightButtonListener);
 
+        touchPad = findViewById(R.id.touchPad);
+        TouchPadController touchPadController = new TouchPadController(commander);
+        touchPad.setOnTouchListener(touchPadController);
         textView = findViewById(R.id.textView);
         editText = findViewById(R.id.editText);
     }

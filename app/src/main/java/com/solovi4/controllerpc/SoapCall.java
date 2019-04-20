@@ -65,7 +65,7 @@ public class SoapCall extends AsyncTask<String, Object, String> {
         envelope.dotNet = true;
         envelope.setOutputSoapObject(request);
         //envelope.setOutputSoapObject(request);
-        HttpTransportSE transportSE = new HttpTransportSE(url, 5000);
+        HttpTransportSE transportSE = new HttpTransportSE(url, 1000);
         try{
             transportSE.call(soapAction, envelope);
             response = (String)envelope.getResponse();

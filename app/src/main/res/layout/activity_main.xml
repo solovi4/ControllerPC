@@ -56,72 +56,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
-    <Button
-        android:id="@+id/buttonCursorUp"
-        android:layout_width="126dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="▲"
-        app:layout_constraintBottom_toTopOf="@+id/moveCursorButton"
-        app:layout_constraintEnd_toStartOf="@+id/buttonMouseRight"
-        app:layout_constraintStart_toEndOf="@+id/buttonMouseLeft" />
-
-    <Button
-        android:id="@+id/buttonCursorLeft"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="88dp"
-        android:text="◄"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCursorRight"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="88dp"
-        android:text="►"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCursorDown"
-        android:layout_width="126dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="▼"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <EditText
         android:id="@+id/editText"
         android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMouseLeft"
+        app:layout_constraintBottom_toTopOf="@+id/touchPad"
         app:layout_constraintEnd_toStartOf="@+id/buttonDel"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonSendText"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:onClick="buttonSendText_click"
         android:text="->"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMouseRight"
+        app:layout_constraintBottom_toTopOf="@+id/touchPad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonDel" />
 
@@ -131,39 +87,35 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:onClick="buttonDel_click"
         android:text="del"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorUp"
+        app:layout_constraintBottom_toTopOf="@+id/touchPad"
         app:layout_constraintEnd_toStartOf="@+id/buttonSendText"
         app:layout_constraintStart_toEndOf="@+id/editText" />
 
     <ImageButton
         android:id="@+id/buttonMouseLeft"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/left_button"
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorLeft"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCursorUp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/left_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/buttonMouseRight"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_marginStart="18dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorRight"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonCursorUp"
         app:srcCompat="@drawable/right_button" />
 
     <ImageButton
@@ -175,9 +127,20 @@
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCursorDown"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCursorRight"
-        app:layout_constraintStart_toEndOf="@+id/buttonCursorLeft"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/circle" />
+
+    <Button
+        android:id="@+id/touchPad"
+        android:layout_width="0dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
